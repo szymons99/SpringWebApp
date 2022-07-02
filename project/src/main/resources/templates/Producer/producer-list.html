@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>All Producers</title>
+</head>
+<body>
+
+<h2>Producers from (in memory) DB</h2>
+
+<div><a th:href="@{/producer/create}">Create</a></div>
+<div th:each="producer : ${producers}">
+    <div th:text="${producer.id}"></div>
+    <div th:text="${producer.name}"></div>
+    <div th:text="${producer.yoe}"></div>
+    <div><a th:href="@{/producer/update/{id}(id=${producer.id})}">Update</a></div>
+    <div><a th:href="@{/producer/delete/{id}(id=${producer.id})}">Delete</a></div>
+</div>
+
+</body>
+</html>

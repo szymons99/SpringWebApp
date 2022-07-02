@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>All Distributors</title>
+</head>
+<body>
+
+<h2>Distributors from (in memory) DB</h2>
+
+<div><a th:href="@{/distributor/create}">Create</a></div>
+<div th:each="distributor : ${distributors}">
+    <div th:text="${distributor.id}"></div>
+    <div th:text="${distributor.name}"></div>
+    <div th:text="${distributor.yoe}"></div>
+    <div><a th:href="@{/distributor/update/{id}(id=${distributor.id})}">Update</a></div>
+    <div><a th:href="@{/distributor/delete/{id}(id=${distributor.id})}">Delete</a></div>
+</div>
+
+</body>
+</html>

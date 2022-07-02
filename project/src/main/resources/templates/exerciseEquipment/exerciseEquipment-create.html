@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise Equipment</title>
+</head>
+<body>
+
+<h2>Create exercise equipment</h2>
+
+<form method="post" th:action="@{/exerciseEquipment}" th:object="${exerciseEquipment}">
+
+    <div><input type="text" th:field="*{name}"></div>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <div><input type="text" th:field="*{price}"></div>
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
+    <div><input type="text" th:field="*{producer}"></div>
+    <div><select id="producers" th:field="*{producers}">
+        <option th:each="producer : ${producers}"
+                th:value="${{producer}}"
+                th:text="${producer}">
+        </option>
+    </select></div><br>
+    <div><select id="distributors" th:field="*{distributors}" multiple="multiple">
+        <option th:each="distributor : ${distributors}"
+                th:value="${{distributor}}"
+                th:text="${distributor}">
+        </option>
+    </select></div><br>
+    <div><input type="submit" th:value="Submit"></div>
+    <div th:if="${#fields.hasErrors('*')}">
+        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>All Exercise Equipments</title>
+</head>
+<body>
+
+<h2>Exercise Equipments from (in memory) DB</h2>
+
+<div><a th:href="@{/exerciseEquipment/create}">Create</a></div>
+<div th:each="exerciseEquipment : ${exerciseEquipments}">
+    <div th:text="${exerciseEquipment.id}"></div>
+    <div th:text="${exerciseEquipment.name}"></div>
+    <div th:text="${exerciseEquipment.price}"></div>
+    <div><a th:href="@{/exerciseEquipment/update/{id}(id=${exerciseEquipment.id})}">Update</a></div>
+    <div><a th:href="@{/exerciseEquipment/delete/{id}(id=${exerciseEquipment.id})}">Delete</a></div>
+</div>
+
+</body>
+</html>
